@@ -1,17 +1,16 @@
 Description
 ===========
 
-This is a basic boilerplate plate for creating a WordPress plugin. At most all this plugin
-does is derive your version number and plugin name from your plugin headers, add/remove the plugin version
-number from the database during activation/deactivation, and auto-include useful files (functions.php,
-admin-tags.php, template-tags.php).
+This is a basic boilerplate plate for creating a WordPress plugin. 
+
+At most all this plugin does is derive your Plugin Version Number and Plugin Name from your [WordPress Plugin File Headers](https://codex.wordpress.org/Writing_a_Plugin#File_Headers), add/remove the Plugin Version Number from the database during activation/de-activation, and auto-include useful files (functions.php, admin-tags.php, template-tags.php).
 
 
 Features
 ========
 
-* Dynamically adds the plugin version number to the WordPress options table on activation
-* Removes the plugin version number from the WordPress options table on de-activation
+* Dynamically adds the Plugin Version Number to the WordPress options table on activation
+* Removes the Plugin Version Number from the WordPress options table on de-activation
 * Dynamically includes useful files if they exists:
     * functions.php // Shared functions between admin and templates
     * admin-tags.php // Functions used only on the WordPress admin
@@ -22,11 +21,12 @@ Usage
 =====
 
 1. Download to wp-content/plugins/
-1. Rename the folder `zm-plugin-boilerplate/` to the name of your plugin
+1. Rename the folder `zm-plugin-bootstrap/` to the name of your plugin
 1. Open the file plugin.php
 1. Edit the plugin headers, i.e., Name, Version, Description, etc.
-1. Verify in the WordPress options table that the version number is saved with the key will be "zm_plugin_boiler_plate"
-1. Start developing...
+1. Open functions.php add shared code between the admin and theme
+1. Open admin-tags.php add code only to be used on the admin
+1. Open template-tags.php add code to be used only by the theme
 ** When the plugin is deactivate the entry for the version number will be removed. **
 
 
@@ -39,9 +39,8 @@ Requirements
 Where To Get Help
 =================
 
-http://wordpress.org/extend/plugins/about/readme.txt
-http://zanematthew.com/blog/autonomy-of-a-plugin
-
+* http://zanematthew.com/blog/plugins/zm-plugin-bootstrap/
+* [http://twitter.com/zanematthew](http://twitter.com/zanematthew)
 
 Contributing, Bugs, Features
 ============================
