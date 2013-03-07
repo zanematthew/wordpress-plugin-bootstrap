@@ -4,11 +4,16 @@
  * Plugin Name: zM Plugin Boiler Plate
  * Plugin URI:
  * Description:
- * Version: 1
+ * Version: 0.1-beta
  * Author:
  * Author URI:
  * License: GPL V2 or Later
  */
+
+
+/***********************************************
+ * YOU SHOULD NOT HAVE TO EDIT BELOW THIS LINE *
+ ***********************************************/
 
 
 /**
@@ -37,22 +42,10 @@ $my_unique_name['version_value'] = $plugin_headers['Version'];
 
 
 /**
- * This file contains our core functions, such as, hooks, init, admin_init, wp_enqueue_scripts, etc.
- */
-require_once 'functions.php';
-
-
-/**
- * We separate functions that are designed to be used in our Themes into the template-tags.php file.
- */
-require_once 'template-tags.php';
-
-
-/**
  * When the user activates the plugin we add the version number to the
- * options table only if this is a newer version.
+ * options table as "my_plugin_name_version" only if this is a newer version.
  */
-$activate_fn = function() {
+$activate_fn = function(){
 
     global $my_unique_name;
 
@@ -67,8 +60,19 @@ register_activation_hook( __FILE__, $activate_fn );
 /**
  * Delete our version number from the database when the plugin is activated.
  */
-$deactivate_fn = function (){
+$deactivate_fn = function(){
     global $my_unique_name;
     delete_option( $my_unique_name['version_key'] );
 };
 register_deactivation_hook( __FILE__, $deactivate_fn );
+
+
+$files = array(
+    'functions.php', // Shared
+    'admin-tags.php', // Admin only
+    'template-tags.php', // Theme only
+    );
+
+foreach( $files as $file ){
+    if ( file_exists( plugin_dir_path( __FILE__ ) . $file ) ) require_once plugin_dir_path( __FILE__ ) . $file;
+}
