@@ -17,15 +17,6 @@
 
 
 /**
- * If this is a localhost we turn on error reporting
- */
-if ( $_SERVER['REMOTE_ADDR'] == '127.0.0.1' || $_SERVER['REMOTE_ADDR'] == 'localhost' ){
-    ini_set( 'display_errors', 'on' );
-    error_reporting( E_ALL );
-}
-
-
-/**
  * From the WordPress plugin headers above we derive the version number, and plugin name
  */
 $plugin_headers = get_file_data( __FILE__, array( 'Version' => 'Version', 'Name' => 'Plugin Name' ) );
@@ -58,21 +49,21 @@ register_activation_hook( __FILE__, $activate_fn );
 
 
 /**
- * Delete our version number from the database when the plugin is activated.
+ * Shared functions between admin and theme
  */
-$deactivate_fn = function(){
-    global $my_unique_name;
-    delete_option( $my_unique_name['version_key'] );
-};
-register_deactivation_hook( __FILE__, $deactivate_fn );
+if ( file_exists( plugin_dir_path( __FILE__ ) . 'functions.php' ) )
+    require_once plugin_dir_path( __FILE__ ) . 'functions.php';
 
 
-$files = array(
-    'functions.php', // Shared
-    'admin-tags.php', // Admin only
-    'template-tags.php', // Theme only
-    );
+/**
+ * Admin only functions
+ */
+if ( is_admin() && file_exists( plugin_dir_path( __FILE__ ) . 'admin-tags.php' ) )
+    require_once plugin_dir_path( __FILE__ ) . 'admin-tags.php';
 
-foreach( $files as $file ){
-    if ( file_exists( plugin_dir_path( __FILE__ ) . $file ) ) require_once plugin_dir_path( __FILE__ ) . $file;
-}
+
+/**
+ * Theme only functions
+ */
+if ( ! is_admin() && file_exists( plugin_dir_path( __FILE__ ) . 'template-tags.php' ) )
+    require_once plugin_dir_path( __FILE__ ) . 'template-tags.php';
