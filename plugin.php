@@ -65,5 +65,5 @@ if ( is_admin() && file_exists( plugin_dir_path( __FILE__ ) . 'admin-tags.php' )
 /**
  * Theme only functions
  */
-if ( ! is_admin() && file_exists( plugin_dir_path( __FILE__ ) . 'template-tags.php' ) )
+if ( file_exists( plugin_dir_path( __FILE__ ) . 'template-tags.php' ) )
     require_once plugin_dir_path( __FILE__ ) . 'template-tags.php';
