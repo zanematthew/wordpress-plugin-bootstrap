@@ -43,6 +43,17 @@ This plugin derives your Plugin Version Number and Plugin Name from your [WordPr
 `my-plugin/inc/css/style.css`
 
 == Frequently Asked Questions ==
+= How Do I enqueue my JavaScript/Stylesheet? =
+In `template-tags.php` add the following code:
+
+<pre>
+function my_custom_name(){
+    wp_enqueue_script( 'MY-PLUGIN-NAME-HERRE-script' );
+    wp_enqueue_style( 'MY-PLUGIN-NAME-HERRE-style' );
+}
+add_action('wp_enqueue_scripts','my_custom_name');
+</pre>
+
 
 == Screenshots ==
 
