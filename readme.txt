@@ -24,9 +24,9 @@ With this bootstrapping approach you no longer have to write code that does the 
 1. Creates script.css (auto registered)
 1. Creates a readme.txt (template)
 
-**Note the file structure and naming convention is based solely on the WordPress
+*Note the file structure and naming convention is based solely on the WordPress
 directory structure. With the exception of `wp-includes/` being shorten to `inc/`
-and losing the prefix.**
+and losing the prefix.*
 
 This plugin derives your Plugin Version Number and Plugin Name from your [WordPress Plugin File Headers](https://codex.wordpress.org/Writing_a_Plugin#File_Headers).
 
