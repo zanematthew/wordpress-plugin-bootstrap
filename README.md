@@ -1,9 +1,25 @@
 Description
 ===========
 
-This is a basic boilerplate plate for creating a WordPress plugin. 
+This boilerplate attempts to cut down on the number of repetitive steps needed
+to get a solid WordPress plugin up and running.
 
-At most all this plugin does is derive your Plugin Version Number and Plugin Name from your [WordPress Plugin File Headers](https://codex.wordpress.org/Writing_a_Plugin#File_Headers), add/remove the Plugin Version Number from the database during activation/de-activation, and auto-include useful files (functions.php, admin-tags.php, template-tags.php).
+With this bootstrapping approach you no longer have to write code that does the following:
+
+1. Add the plugin version number to the database (activation)
+1. Remove the plugin version number from the database (de-activation)
+1. Creates admin-tags.php (auto included)
+1. Creates template-tags.php (auto included)
+1. Creates functions.php (auto included)
+1. Creates style.css (auto registered)
+1. Creates script.css (auto registered)
+1. Creates a readme.txt (template)
+
+**Note the file structure and naming convention is based solely on the WordPress
+directory structure. With the exception of `wp-includes/` being shorten to `inc/`
+and losing the prefix.**
+
+This plugin derives your Plugin Version Number and Plugin Name from your [WordPress Plugin File Headers](https://codex.wordpress.org/Writing_a_Plugin#File_Headers).
 
 
 Features
