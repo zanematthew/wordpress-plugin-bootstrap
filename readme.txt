@@ -1,4 +1,5 @@
-===  ===
+===  WordPress Plugin Bootstrap ===
+
 Contributors:
 Donate link:
 Tags:
